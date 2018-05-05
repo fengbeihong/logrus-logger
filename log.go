@@ -118,8 +118,8 @@ func NewMyLogger(level logrus.Level, path string) *MyLogger {
 	ml.SetLogLevel(level)
 	ml.SetLogFormatter(&Formatter{})
 	ml.SetClockTime(LocalTime)
-	ml.SetLogMaxAge(time.Duration(86400) * time.Second)
-	ml.SetRotationTime(time.Duration(604800) * time.Second)
+	ml.SetLogMaxAge(time.Duration(604800) * time.Second)   // save at most 7 days
+	ml.SetRotationTime(time.Duration(86400) * time.Second) // rotate every day
 
 	if strings.HasSuffix(path, ".log") {
 		path = path[:strings.LastIndex(path, ".log")]
